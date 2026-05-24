@@ -1,3 +1,5 @@
+const todoRoutes= require("./routes/todoRoutes");
+
 require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
@@ -18,6 +20,8 @@ const PORT = 5000;
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB connected"))
 .catch((err) => console.log(err));
+
+app.use("/api/todos", todoRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

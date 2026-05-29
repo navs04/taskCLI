@@ -2,36 +2,69 @@ import './App.css'
 import { useState, useEffect } from 'react';
 
 function App() {
-  const [todos, setTodos] = useState(() => {
-    const stored = localStorage.getItem("todos");
-    return stored ? JSON.parse(stored) : [];
-  });
+  const [todos, setTodos] = useState([]);
 
-  function handleAdd(todo){
-    setTodos([...todos, {text: todo, completed: false}]);
+  async function fetchTodos(){
+    try{
+      const response = await fetch("http://localhost:5000/api/todos");
+
+      const data = await response.json();
+
+      setTodos(data);
+    } catch(error){
+      console.log(error);
+    }
   }
 
-  function handleDelete(todoIndex){
-    const updatedTodos = todos.filter((_, index) => index !== todoIndex);
-    setTodos(updatedTodos);
+  async function handleAdd(todo){
+    try{
+      const response = await fetch("http://localhost:5000/api/todos", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({text: todo})
+      });
+
+      const data = await response.json();
+
+      setTodos((prevTodos) => [...prevTodos, data]);
+    } catch(error){
+      console.log(error);
+    }
   }
 
-  function handleToggle(todoIndex){
-    const updatedTodos = todos.map((item, index) => {
-      if(index === todoIndex){
-        return {
-          ...item,
-          completed : !item.completed
-        };
-      }
-      return item;
-    })
-    setTodos(updatedTodos);
+  async function handleDelete(todoId){
+    try{
+      await fetch(`http://localhost:5000/api/todos/${todoId}`,{
+        method: "DELETE",
+      });
+
+      setTodos(todos.filter((todo) => todo._id !== todoId));
+    } catch(error){
+      console.log(error);
+    }
   }
 
+  async function handleToggle(todoId){
+   try{
+    const response = await fetch(`http://localhost:5000/api/todos/${todoId}`, {
+      method: "PUT",
+    });
+
+    const updatedTodo = await response.json();
+
+    setTodos(
+      todos.map((todo) => todo._id === todoId? updatedTodo: todo)
+    );
+   } catch(error){
+    console.log(error);
+   }
+  }
+  
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
+    fetchTodos();
+  }, []);
 
   return (
  <div className="app-container">
@@ -45,18 +78,18 @@ function App() {
         <p className="empty-state">No todos yet. Add one 🚀</p>
       ) : (
         <ul className="todo-list">
-          {todos.map((item, index) => (
-            <li key={index} className="todo-item">
+          {todos.map((item) => (
+            <li key={item._id} className="todo-item">
               <span
                 className={`todo-text ${item.completed ? "completed" : ""}`}
-                onClick={() => handleToggle(index)}
+                onClick={() => handleToggle(item._id)}
               >
                 {item.text}
               </span>
 
               <button
                 className="delete-btn"
-                onClick={() => handleDelete(index)}
+                onClick={() => handleDelete(item._id)}
               >
                 ✕
               </button>

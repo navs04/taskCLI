@@ -1,101 +1,113 @@
-# Todo App
+# TaskCLI
 
-A modern and responsive Todo App built using React.
-This app helps users manage daily tasks with a clean UI and smooth user experience.
-
----
+A terminal-inspired full-stack task manager built with the MERN stack. TaskCLI allows users to create, complete, and delete tasks through a clean developer-focused interface while persisting data in MongoDB.
 
 ## Features
 
-* Add new todos
-* Mark todos as completed
-* Delete todos
-* Persistent storage using LocalStorage
-* Clean and modern UI
-* Instant updates with React state
-
----
+* Create new tasks
+* Mark tasks as completed
+* Delete tasks
+* Persistent cloud storage with MongoDB Atlas
+* RESTful API built with Express and Node.js
+* Real-time frontend-backend communication using Fetch API
+* Terminal-inspired UI with custom styling
+* Fully deployed frontend and backend
 
 ## Tech Stack
 
-* React (useState, useEffect)
-* JavaScript (ES6+)
-* HTML5 & CSS3
-* LocalStorage API
+### Frontend
 
----
+* React
+* JavaScript (ES6+)
+* HTML5
+* CSS3
+* Vite
+
+### Backend
+
+* Node.js
+* Express.js
+
+### Database
+
+* MongoDB Atlas
+* Mongoose
+
+### Deployment
+
+* Vercel
+* Render
 
 ## Project Structure
 
-```
-react-todo-app/
-├── public/
-├── src/
-│   ├── App.jsx
-│   ├── App.css
-│   ├── index.css
-│   ├── main.jsx
-│   └── assets/
-├── index.html
-├── package.json
-├── package-lock.json
-├── vite.config.js
-├── eslint.config.js
+taskCLI/
+├── client/
+│ ├── src/
+│ ├── index.html
+│ ├── package.json
+│ └── vite.config.js
+│
+├── server/
+│ ├── models/
+│ ├── routes/
+│ ├── server.js
+│ └── package.json
+│
 └── README.md
-```
-
----
 
 ## Installation & Setup
 
-1. Clone the repository
+### Clone the repository
 
-```
-git clone https://github.com/navs04/react-todo-app.git
-```
+git clone https://github.com/navs04/taskCLI.git
 
-2. Navigate into the project
+### Navigate into the project
 
-```
-cd react-todo-app
-```
+cd taskcli
 
-3. Install dependencies
+### Install frontend dependencies
 
-```
+cd client
 npm install
-```
 
-4. Start the development server
+### Install backend dependencies
 
-```
+cd ../server
+npm install
+
+### Environment variables
+
+Create a .env file inside the server directory and add:
+
+MONGO_URI=your_mongodb_connection_string
+
+### Start backend
+
 npm run dev
-```
 
----
+### Start frontend
 
-## 🌐 Live Demo
+cd ../client
+npm run dev
 
-https://react-todo-app-iota-three.vercel.app/
+## Live Demo
 
----
+Frontend: https://react-todo-app-iota-three.vercel.app/
+
+Backend API: https://react-todo-app-3rlg.onrender.com/api/todos
 
 ## Future Improvements
 
-* Edit todo feature
-* Filter todos (All / Completed / Active)
-* Dark mode
-* Better mobile responsiveness
-* Drag and drop reordering
+* User authentication
+* Due dates and reminders
+* Drag-and-drop task ordering
 
----
+## Author
 
-## 📌 Author
+Navya Bhatia
 
-**Navya Bhatia**
+GitHub: https://github.com/navs04
 
----
+## License
 
-## ⭐ If you like this project
-
-Give it a star on GitHub and feel free to fork it!
+This project is open source and available under the MIT License.

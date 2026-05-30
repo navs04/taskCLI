@@ -109,3 +109,15 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+@font-face {
+  font-family: "Fira Code";
+  src: url("./assets/fonts/DMSerifText-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Fira Code";
+  src: url("./assets/fonts/FiraCode-VariableFont_wght.ttf") format("truetype");
+  font-weight: 700;
+}

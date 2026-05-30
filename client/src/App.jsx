@@ -69,14 +69,23 @@ function App() {
 
   return (
  <div className="app-container">
-  <h1 className="main-heading">✨ TaskFlow</h1>
-  <p className="subtitle">Stay organized. Stay focused.</p>
+  <h1 className="main-heading">TaskCLI</h1>
+  <p className="subtitle"> user@taskcli:~$ manage_tasks</p>
+  <p className="task-counter">
+    {todos.length} task{todos.length !== 1 ? "s": ""} loaded
+  </p>
 
     <div className="todo-card">
+      <div className="terminal-header">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
       <Form onAdd={handleAdd} />
 
       {todos.length === 0 ? (
-        <p className="empty-state">No todos yet. Add one 🚀</p>
+        <p className="empty-state">No tasks found</p>
       ) : (
         <ul className="todo-list">
           {todos.map((item) => (
@@ -85,6 +94,7 @@ function App() {
                 className={`todo-text ${item.completed ? "completed" : ""}`}
                 onClick={() => handleToggle(item._id)}
               >
+                {item.completed? "[x] " : "[ ] " }
                 {item.text}
               </span>
 
@@ -110,7 +120,7 @@ function Form({ onAdd }) {
     <div className="form">
       <input
         type="text"
-        placeholder="Add a new todo..."
+        placeholder="Enter task..."
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
@@ -123,7 +133,7 @@ function Form({ onAdd }) {
           setText('');
         }}
       >
-        Add
+        EXECUTE
       </button>
     </div>
   );

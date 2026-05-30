@@ -1,32 +1,38 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  background: #0d1117;
+  color: #c9d1d9;
+  font-family: "Fira Code", monospace;
 }
 
 .app-container {
   max-width: 900px;
-  margin: 80px auto;
-  padding: 20px;
+  margin: 60px auto;
+  padding: 24px;
 }
 
 .main-heading {
+  color: #58a6ff;
   font-size: 42px;
-  font-weight: 800;
   margin-bottom: 8px;
-  color: #111827;
 }
 
 .subtitle {
-  color: #6b7280;
+  color: #7ee787;
+  margin-bottom: 10px;
+}
+
+.task-counter {
+  color: #8b949e;
   margin-bottom: 30px;
 }
 
 .todo-card {
-  background: white;
-  padding: 32px;
-  border-radius: 18px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
 }
 
 h1 {
@@ -41,29 +47,32 @@ h1 {
   gap: 10px;
   margin-bottom: 20px;
 }
+
 .form input {
   flex: 1;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
   padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  font-size: 15px;
+  font-family: inherit;
 }
 
 .form input:focus {
   outline: none;
-  border-color: #4f46e5;
+  border-color: #58a6ff;
 }
 
 .form button {
-  padding: 12px 16px;
-  background: #4f46e5;
-  border-radius: 8px;
-  font-weight: 500;
-   font-size: 14px;
+  background: #238636;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .form button:hover {
-  background: #4338ca;
+  background: #2ea043;
 }
 
 .empty-state {
@@ -80,10 +89,9 @@ h1 {
 }
 
 .todo-item {
-  padding: 16px;
-  border-radius: 12px;
-  margin-bottom: 14px;
-  background: #f9fafb;
+  background: transparent;
+  border-bottom: 1px solid #30363d;
+  padding: 14px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -95,25 +103,47 @@ h1 {
 }
 
 .todo-text {
-  font-size: 16px;
   cursor: pointer;
+  color: #c9d1d9;
 }
 
 .todo-text.completed {
+  color: #7d8590;
   text-decoration: line-through;
-  color: #888;
 }
 
 .delete-btn {
-  background: #fee2e2;
+  background: transparent;
   border: none;
-  color: #b91c1c;
-  padding: 6px 10px;
-  border-radius: 6px;
+  color: #f85149;
   cursor: pointer;
-  transition: 0.2s;
+  font-size: 16px;
 }
 
 .delete-btn:hover {
-  background: #fecaca;
+  transform: scale(1.1);
+}
+
+.terminal-header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.terminal-header span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-header span:nth-child(1) {
+  background: #ff5f56;
+}
+
+.terminal-header span:nth-child(2) {
+  background: #ffbd2e;
+}
+
+.terminal-header span:nth-child(3) {
+  background: #27c93f;
 }

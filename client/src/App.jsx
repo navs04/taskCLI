@@ -1,12 +1,13 @@
 import './App.css'
 import { useState, useEffect } from 'react';
+import { API_URL } from './config';
 
 function App() {
   const [todos, setTodos] = useState([]);
 
   async function fetchTodos(){
     try{
-      const response = await fetch("http://localhost:5000/api/todos");
+      const response = await fetch(API_URL);
 
       const data = await response.json();
 
@@ -18,7 +19,7 @@ function App() {
 
   async function handleAdd(todo){
     try{
-      const response = await fetch("http://localhost:5000/api/todos", {
+      const response = await fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-type": "application/json"
@@ -36,7 +37,7 @@ function App() {
 
   async function handleDelete(todoId){
     try{
-      await fetch(`http://localhost:5000/api/todos/${todoId}`,{
+      await fetch(`${API_URL}/${todoId}`,{
         method: "DELETE",
       });
 
@@ -48,7 +49,7 @@ function App() {
 
   async function handleToggle(todoId){
    try{
-    const response = await fetch(`http://localhost:5000/api/todos/${todoId}`, {
+    const response = await fetch(`${API_URL}/${todoId}`, {
       method: "PUT",
     });
 

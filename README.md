@@ -42,16 +42,16 @@ A terminal-inspired full-stack task manager built with the MERN stack. TaskCLI a
 
 taskCLI/
 ├── client/
-│ ├── src/
-│ ├── index.html
-│ ├── package.json
-│ └── vite.config.js
+│   ├── src/
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.js
 │
 ├── server/
-│ ├── models/
-│ ├── routes/
-│ ├── server.js
-│ └── package.json
+│   ├── models/
+│   ├── routes/
+│   ├── server.js
+│   └── package.json
 │
 └── README.md
 

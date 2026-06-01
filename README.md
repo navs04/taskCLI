@@ -37,25 +37,7 @@ A terminal-inspired full-stack task manager built with the MERN stack. TaskCLI a
 
 * Vercel
 * Render
-
-## Project Structure
-
-taskCLI/
-├── client/
-│   ├── src/
-│   ├── index.html
-│   ├── package.json
-│   └── vite.config.js
-│
-├── server/
-│   ├── models/
-│   ├── routes/
-│   ├── server.js
-│   └── package.json
-│
-└── README.md
-
-
+  
 ## Installation & Setup
 
 ### Clone the repository
